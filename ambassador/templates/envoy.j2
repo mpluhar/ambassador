@@ -13,6 +13,9 @@
           "alpn_protocols": "{{ listener.tls.alpn_protocols }}"
           {%- endif -%}{{ "," if listener.tls.cacert_chain_file }}
         {%- endif -%}
+          {%- if listener.tls.tls_params -%}
+          "tls_params": "{{ listener.tls.tls_params }}"
+          {%- endif -%}
         {%- if listener.tls.cacert_chain_file -%}
           "ca_cert_file": "{{ listener.tls.cacert_chain_file }}"{{ "," if listener.tls.cert_required }}
           {%- if listener.tls.cert_required -%}"require_client_certificate": true{%- endif %}
